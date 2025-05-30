@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/js/app.js}" defer></script>
+    <title>アーティスト管理システム</title>
+</head>
+<body>
+<div id="header" th:replace="~{layout :: header}"></div>
+<div class="text-center"><h1>機能一覧</h1></div>
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">アーティスト一覧</h5>
+            <p class="card-text">システムに登録されているアーティストの一覧.</p>
+            <form method="get" th:method="get" th:action="@{/artists}">
+                <button class="btn btn-secondary" type="submit">移動</button>
+            </form>
+        </div>
+    </div>
+    <div class="card" >
+        <img src="/pic/nogizaka.png" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h5 class="card-title">メンバー一覧</h5>
+            <p class="card-text">システムに登録されているメンバーの一覧.</p>
+            <a href="#" class="btn btn-primary">移動</a>
+        </div>
+    </div>
+    <div class="card" >
+        <div class="card-body">
+            <h5 class="card-title">アルバム一覧</h5>
+            <p class="card-text">システムに登録されているアルバムの一覧.</p>
+            <a href="#" class="btn btn-primary">移動</a>
+        </div>
+    </div>
+    <div class="card ml-3" >
+        <div class="card-body">
+            <h5 class="card-title">曲一覧</h5>
+            <p class="card-text">システムに登録されている曲の一覧.</p>
+            <a href="#" class="btn btn-primary">移動</a>
+        </div>
+    </div>
+
+    <div class="card  ml-3">
+        <div class="card-body">
+            <h5 class="card-title">設定</h5>
+            <p class="card-text">システム設定</p>
+            <a href="#" class="btn btn-primary">移動</a>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+<div id="footer" th:replace="~{layout :: footer}"></div>
+
+</body>
+</html>
