@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/js/app.js}" defer></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<header th:fragment="header">
+    <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1" href="/artists">アーティスト管理アプリ</span>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/artists">アーティスト一覧</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link">アルバム一覧</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<footer th:fragment="footer">
+    <div class="fixed-bottom bg-light">
+        <p style="text-align:right">©2025 Tatsushi Sato</p>
+    </div>
+</footer>

@@ -5,9 +5,7 @@ import com.example.thymeleafsample.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ArtistController {
@@ -24,6 +22,30 @@ public class ArtistController {
         var artists = artistService.findAll();
 
         model.addAttribute("artists", artists);
-        return "artists";
+        return "/artist/artists";
+    }
+
+    @GetMapping("/artists/register")
+    public String displayRegsiter(Model model){
+        model.addAttribute("artist", new Artist());
+        return "/artist/register";
+    }
+    @PostMapping("/artists")
+    public String registerArtist(@ModelAttribute Artist artist) {
+        artistService.registerArtist(artist);
+
+        return "redirect:/artists";
+    }
+    @GetMapping("/artists/{id}")
+    public String findById(Model model, @PathVariable int id) {
+        var artist = artistService.findById(id).orElseGet(Artist::new);
+        model.addAttribute("artist", artist);
+        return "artist/artist";
+    }
+
+    @DeleteMapping("/artists/{id}")
+    public String deleteById(Model model, @PathVariable int id){
+        artistService.deleteById(id);
+        return "redirect:/artists";
     }
 }

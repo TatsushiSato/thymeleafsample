@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "artists")
 @Data
@@ -19,6 +21,14 @@ public class Artist {
     private String artistHiraganaName;
 
     private String artistArtUrl;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="artistId")
+    private List<Member> members;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "artistId")
+    private List<Album> albums;
 }
 
 
