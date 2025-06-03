@@ -22,6 +22,8 @@ public class Artist {
 
     private String artistArtUrl;
 
+    private String caption;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="artistId")
     private List<Member> members;

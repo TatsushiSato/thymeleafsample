@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/app.css}" rel="stylesheet" />
+  <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" defer></script>
+  <script th:src="@{/js/app.js}" defer></script>
+  <title>メンバー詳細</title>
+</head>
+<body>
+<div id="header" th:replace="~{layout :: header}"></div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-3">
+    </div>
+
+    <div class="col-6 form-group" >
+      <label class="col-form-label-sm">メンバー名</label>
+      <p th:text="${member.memberName}"></p>
+
+    </div>
+  </div>
+
+</div>
+
+<div id="footer" th:replace="~{layout :: footer}"></div>
+</body>
+</html>
