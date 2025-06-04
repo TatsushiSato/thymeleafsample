@@ -12,15 +12,27 @@
 
 <header th:fragment="header">
     <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1" href="/artists">アーティスト管理アプリ</span>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="/artists">アーティスト一覧</a>
+    <div class="container-fluid">
+
+        <a class="navbar-brand mb-0 h1" href="/artists">アーティスト管理アプリ</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/artists">Artists</a>
+            </li>
+            <li class="nav-item"><a class="nav-link">Albums</a>
+            </li>
+            <li class="nav-item"><a class="nav-link">Members</a>
+            </li>
+            <li class="nav-item"><a class="nav-link">Songs</a>
+            </li>
+            <li class="nav-item"><a class="nav-link">Setting</a>
             </li>
         </ul>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link">アルバム一覧</a>
-            </li>
-        </ul>
+        <form class="d-flex" role="search" th:action="@{/search}" method="GET">
+            <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+    </div>
     </nav>
 </header>
 
