@@ -13,23 +13,25 @@
 <div class="text-center"><h1>機能一覧</h1></div>
 <div class="container mt-5 py-5">
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-4">
-    <div class="col">
-        <div class="card">
-            <img src="/pic/nogizaka.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">アーティスト一覧</h5>
-                <p class="card-text">システムに登録されているアーティストの一覧.</p>
-                <form method="get" th:method="get" th:action="@{/artists}">
-                    <button class="btn btn-secondary" type="submit">移動</button>
-                </form>
+    <div class="row row-cols-4 row-cols-md-2 row-cols-xxl-4 g-4">
+        <div class="col">
+            <div class="card" >
+                <img src="/pic/menu.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">アーティスト一覧</h5>
+                    <p class="card-text">システムに登録されているアーティストの一覧.</p>
+                    <form method="get" th:method="get" th:action="@{/artists}">
+                        <button class="btn btn-secondary" type="submit">移動</button>
+                    </form>
 
+                </div>
             </div>
         </div>
-    </div>
+
+
     <div class="col">
         <div class="card" >
-            <img src="/pic/nogizaka.png" class="card-img-top" alt="..." >
+            <img src="/pic/menu.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title h5">メンバー一覧</h3>
                 <p class="card-text">システムに登録されているメンバーの一覧.</p>
@@ -41,6 +43,7 @@
     </div>
     <div class="col">
         <div class="card" >
+            <img src="/pic/menu.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title h5">アルバム一覧</h3>
                 <p class="card-text">システムに登録されているアルバムの一覧.</p>
@@ -50,6 +53,7 @@
     </div>
     <div class="col">
         <div class="card ml-3" >
+            <img src="/pic/menu.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title h5">曲一覧</h3>
                 <p class="card-text">システムに登録されている曲の一覧.</p>
@@ -60,6 +64,7 @@
     </div>
     <div class="col">
         <div class="card  ml-3">
+            <img src="/pic/menu.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">設定</h5>
                 <p class="card-text">システム設定</p>
