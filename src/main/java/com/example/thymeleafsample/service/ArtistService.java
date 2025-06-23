@@ -17,7 +17,7 @@ public class ArtistService {
 
     private final ArtistRepository artistRepository;
 
-    private final LocalStorageService  localStorageService;
+    private final StorageService localStorageService;
 
     @Autowired
     public ArtistService(ArtistRepository artistRepository, LocalStorageService localStorageService) {
