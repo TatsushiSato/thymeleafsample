@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class ArtistController {
@@ -31,8 +36,9 @@ public class ArtistController {
         return "/artist/register";
     }
     @PostMapping("/artists")
-    public String registerArtist(@ModelAttribute Artist artist) {
-        artistService.registerArtist(artist);
+    public String registerArtist(@ModelAttribute Artist artist,@RequestParam("artist_cover") MultipartFile cover) {
+
+        artistService.registerArtist(artist,cover);
 
         return "redirect:/artists";
     }

@@ -18,14 +18,13 @@
     </div>
 
     <div class="col-6 form-group" >
-        <form th:action="@{/artists}" th:object="${artist}" th:method="post">
+        <form th:action="@{/artists}" th:object="${artist}" th:method="post" enctype="multipart/form-data">
             <label class="col-form-label-sm">アーティスト名</label>
             <input type="text" class="form-control" th:field="*{artistName}">
             <label class="col-form-label-sm">アーティスト名(読み)</label>
             <input type="text" class="form-control" th:field="*{artistHiraganaName}">
-            <label class="col-form-label-sm">公式HP</label>
-            <input type="text" class="form-control" th:field="*{artistArtUrl}">
-
+            <label class="col-form-label-sm">アーティスト写真</label>
+            <input type="file" class="form-control" name="artist_cover" />
             <button type="submit" class="btn btn-primary mt-3">登録</button>
 
 

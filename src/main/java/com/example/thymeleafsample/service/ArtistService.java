@@ -4,7 +4,11 @@ import com.example.thymeleafsample.entity.Artist;
 import com.example.thymeleafsample.repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +17,12 @@ public class ArtistService {
 
     private final ArtistRepository artistRepository;
 
+    private final LocalStorageService  localStorageService;
+
     @Autowired
-    public ArtistService(ArtistRepository artistRepository) {
+    public ArtistService(ArtistRepository artistRepository, LocalStorageService localStorageService) {
         this.artistRepository = artistRepository;
+        this.localStorageService = localStorageService;
     }
 
     /**
@@ -47,7 +54,12 @@ public class ArtistService {
      * 新規登録処理
      * @param artist 登録レコード情報
      */
-    public void registerArtist(Artist artist) {
+    public void registerArtist(Artist artist, MultipartFile cover) {
+        //Files.write(Paths.get("static/images/" + cover.getOriginalFilename()),cover.getBytes());
+        var filePath = localStorageService.store(cover);
+
+        //artist.setArtistArtUrl("images/" + cover.getOriginalFilename());
+        artist.setArtistArtUrl(filePath);
         artistRepository.save(artist);
     }
 }

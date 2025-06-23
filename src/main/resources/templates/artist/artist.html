@@ -19,7 +19,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img th:src="'/pic' + ${artist.artistArtUrl} + '1.png'" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
+                <img th:src="'/' + ${artist.artistArtUrl}" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
                 <!-- <img src="images/hero1.jpg" width="1920" height="550" class="d-block w-100 opacity-75" alt="..."> -->
                 <div class="carousel-caption text-dark-emphasis d-none d-md-block">
                     <h2 class="display-3" th:text="${artist.artistName}"></h2>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img th:src="'/pic' + ${artist.artistArtUrl} + '1.png'" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
+                <img th:src="'/' + ${artist.artistArtUrl}" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
                 <div class="carousel-caption text-dark-emphasis d-none d-md-block">
                     <h2 class="display-3" th:text="${artist.artistName}"></h2>
                     <p class="lead">
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img th:src="'/pic' + ${artist.artistArtUrl} + '1.png'" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
+                <img th:src="'/' + ${artist.artistArtUrl}" class="d-block w-100 opacity-75 object-fit-cover " alt="..." height="500">
                 <div class="carousel-caption text-dark-emphasis d-none d-md-block">
                     <h2 class="display-3" th:text="${artist.artistName}"></h2>
                     <p class="lead">

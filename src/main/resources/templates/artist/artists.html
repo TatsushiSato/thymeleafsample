@@ -25,14 +25,12 @@
       <tr>
         <th>アーティスト名</th>
         <th>アーティスト名(読み)</th>
-        <th>公式HP</th>
         <th>詳細</th>
         <th>削除</th>
       </tr>
       <tr th:each="artist: ${artists}">
         <td th:text="${artist.artistName}"></td>
         <td th:text="${artist.artistHiraganaName}"></td>
-        <td th:text="${artist.artistArtUrl}"></td>
         <td style="text-align: center">
           <form method="get" th:method="get" th:action="@{/artists/{id}(id=*{artist.artistId})}">
             <input type="hidden" name="id" th:value="${artist.artistId}" />
