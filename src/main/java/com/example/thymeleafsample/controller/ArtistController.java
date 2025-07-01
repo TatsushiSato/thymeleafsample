@@ -3,8 +3,11 @@ package com.example.thymeleafsample.controller;
 import com.example.thymeleafsample.entity.Artist;
 import com.example.thymeleafsample.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,17 +34,19 @@ public class ArtistController {
     }
 
     @GetMapping("/artists/register")
-    public String displayRegsiter(Model model){
+    public String displayRegister(Model model){
         model.addAttribute("artist", new Artist());
         return "/artist/register";
     }
     @PostMapping("/artists")
-    public String registerArtist(@ModelAttribute Artist artist,@RequestParam("artist_cover") MultipartFile cover) {
-
+    public String registerArtist(@ModelAttribute @Validated Artist artist, BindingResult result, @RequestParam("artist_cover") MultipartFile cover,Model model) {
+        if(result.hasErrors()){
+            return "/artist/register";
+        }
         artistService.registerArtist(artist,cover);
-
         return "redirect:/artists";
     }
+
     @GetMapping("/artists/{id}")
     public String findById(Model model, @PathVariable int id) {
         var artist = artistService.findById(id).orElseGet(Artist::new);

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/app.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/js/app.js}" defer></script>
+    <title>アーティスト新規登録</title>
+  </head>
+</head>
+<body>
+<div id="header" th:replace="~{layout :: header}"></div>
+<div class="text-center"><h1>アーティスト新規登録</h1></div>
+<div class="row">
+  <div class="col-3">
+  </div>
+
+  <div class="col-6 form-group" >
+    <form th:action="@{/members}" th:object="${member}" th:method="post" enctype="multipart/form-data">
+      <label class="col-form-label-sm fs-4">アーティスト名</label>
+      <input type="text" class="form-control" th:field="*{memberName}">
+      <div class="fw-bold" th:if="${#fields.hasErrors('memberName')}" th:errors="*{memberName}" th:errorclass="err" style="color:red"></div>
+      <label class="col-form-label-sm fs-4">アーティスト名(読み)</label>
+      <input type="text" class="form-control" th:field="*{memberHiraganaName}">
+      <div class="fw-bold" th:if="${#fields.hasErrors('memberHiraganaName')}" th:errors="*{memberHiraganaName}" th:errorclass="err" style="color:red"></div>
+      <label class="col-form-label-sm fs-4">誕生日</label>
+      <input type="date" class="form-control" th:field="*{memberBirthday}">
+      <label class="col-form-label-sm fs-4">所属グループ</label>
+      <select class="form-select" th:field="${member.artistId}">
+        <option value="0"></option>
+        <option th:each="artist : ${artists}" th:value="${artist.artistId}" th:text="${artist.artistName}" ></option>
+      </select>
+      <label class="col-form-label-sm fs-4">メンバー写真</label>
+      <input type="file" class="form-control" name="member_cover" />
+      <button type="submit" class="btn btn-primary mt-3">登録</button>
+
+    </form>
+  </div>
+</div>
+<div id="footer" th:replace="~{layout :: footer}"></div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import com.example.thymeleafsample.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,12 @@ public class MemberService {
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+    }
+
+    public List<Member> findAll(){
+        List<Member> members = new ArrayList<>();
+        memberRepository.findAll().forEach(members::add);
+        return members;
     }
 
     public List<Member> findByArtistId(int artistId){

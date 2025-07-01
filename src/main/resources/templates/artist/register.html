@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <head>
         <meta charset="UTF-8">
@@ -19,17 +19,22 @@
 
     <div class="col-6 form-group" >
         <form th:action="@{/artists}" th:object="${artist}" th:method="post" enctype="multipart/form-data">
-            <label class="col-form-label-sm">アーティスト名</label>
+            <label class="col-form-label-sm fs-4">アーティスト名</label>
             <input type="text" class="form-control" th:field="*{artistName}">
-            <label class="col-form-label-sm">アーティスト名(読み)</label>
+            <div class="fw-bold" th:if="${#fields.hasErrors('artistName')}" th:errors="*{artistName}" th:errorclass="err" style="color:red"></div>
+            <label class="col-form-label-sm fs-4">アーティスト名(読み)</label>
             <input type="text" class="form-control" th:field="*{artistHiraganaName}">
-            <label class="col-form-label-sm">アーティスト写真</label>
+            <div class="fw-bold" th:if="${#fields.hasErrors('artistHiraganaName')}" th:errors="*{artistHiraganaName}" th:errorclass="err" style="color:red"></div>
+            <label class="col-form-label-sm fs-4">説明</label>
+            <input type="text" class="form-control" th:field="*{caption}">
+            <label class="col-form-label-sm fs-4">アーティスト写真</label>
             <input type="file" class="form-control" name="artist_cover" />
             <button type="submit" class="btn btn-primary mt-3">登録</button>
 
-
         </form>
+
     </div>
 </div>
+<div id="footer" th:replace="~{layout :: footer}"></div>
 </body>
 </html>

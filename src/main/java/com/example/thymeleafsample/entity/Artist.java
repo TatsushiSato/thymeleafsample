@@ -1,6 +1,7 @@
 package com.example.thymeleafsample.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,8 +17,9 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer artistId;
 
+    @NotEmpty
     private String artistName;
-
+    @NotEmpty
     private String artistHiraganaName;
 
     private String artistArtUrl;

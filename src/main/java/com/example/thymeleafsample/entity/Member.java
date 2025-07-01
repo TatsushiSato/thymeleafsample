@@ -25,6 +25,10 @@ public class Member {
 
     private LocalDate memberBirthday;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="artistId",insertable = false, updatable = false)
+    private Artist artist;
+
     /**
      * 画面表示の時間と誕生日を比較し、画面表示時点での年齢を返す
      * @return 画面表示時の年齢

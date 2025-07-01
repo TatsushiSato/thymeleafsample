@@ -6,10 +6,9 @@ import com.example.thymeleafsample.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -25,8 +24,28 @@ public class MemberController {
         this.artistService = artistService;
     }
 
-    public String registerMember(@ModelAttribute Member member, @RequestParam("member_cover") MultipartFile cover) {
+    @GetMapping("/members")
+    public String findAll(Model model){
+        var members = memberService.findAll();
+        model.addAttribute("members", members);
+        return "member/members";
+    }
 
-        return "member/member";
+    @GetMapping("/members/register")
+    public String displayRegister(Model model){
+        model.addAttribute("member", new Member());
+        var artists = artistService.findAll();
+        model.addAttribute("artists", artists);
+        return "/member/register";
+    }
+
+    @PostMapping("/members")
+    public String registerMember(@ModelAttribute @Validated Member member, BindingResult result, @RequestParam("member_cover") MultipartFile cover) {
+        if(result.hasErrors()){
+            return "/member/register";
+        }
+
+        memberService.registerMember(member);
+        return "redirect:/members";
     }
 }
