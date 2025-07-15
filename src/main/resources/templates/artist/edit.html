@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/app.css}" rel="stylesheet" />
+        <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}" defer></script>
+        <script th:src="@{/js/app.js}" defer></script>
+        <title>アーティスト編集</title>
+    </head>
+</head>
+<body>
+<div id="header" th:replace="~{layout :: header}"></div>
+<div class="text-center"><h1>アーティスト新規登録</h1></div>
+<div class="row">
+    <div class="col-3">
+    </div>
+
+    <div class="col-6 form-group" >
+        <form th:action="@{/artists}" th:object="${artist}" th:method="put" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{artistId}">
+            <label class="col-form-label-sm fs-4">アーティスト名</label>
+            <input type="text" class="form-control" th:field="*{artistName}">
+            <div class="fw-bold" th:if="${#fields.hasErrors('artistName')}" th:errors="*{artistName}" th:errorclass="err" style="color:red"></div>
+            <label class="col-form-label-sm fs-4">アーティスト名(読み)</label>
+            <input type="text" class="form-control" th:field="*{artistHiraganaName}">
+            <div class="fw-bold" th:if="${#fields.hasErrors('artistHiraganaName')}" th:errors="*{artistHiraganaName}" th:errorclass="err" style="color:red"></div>
+            <label class="col-form-label-sm fs-4">説明</label>
+            <input type="text" class="form-control" th:field="*{caption}">
+            <label class="col-form-label-sm fs-4">アーティスト写真</label>
+            <input type="file" class="form-control" name="artist_cover" />
+            <button type="submit" class="btn btn-primary mt-3">更新</button>
+
+        </form>
+
+    </div>
+</div>
+<div id="footer" th:replace="~{layout :: footer}"></div>
+</body>
+</html>

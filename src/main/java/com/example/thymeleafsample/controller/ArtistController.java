@@ -33,6 +33,23 @@ public class ArtistController {
         return "/artist/artists";
     }
 
+    @GetMapping("/artists/edit/{id}")
+    public String edit(Model model, @PathVariable Integer id) {
+        Artist artist = artistService.findById(id).orElse(new Artist());
+
+        model.addAttribute("artist", artist);
+        return "/artist/edit";
+    }
+
+    @PutMapping("/artists")
+    public String editArtist(@ModelAttribute @Validated Artist artist, BindingResult result, @RequestParam("artist_cover") MultipartFile cover,Model model) {
+        if(result.hasErrors()){
+            return "/artist/edit";
+        }
+        artistService.registerArtist(artist,cover);
+        return "redirect:/artists";
+    }
+
     @GetMapping("/artists/register")
     public String displayRegister(Model model){
         model.addAttribute("artist", new Artist());

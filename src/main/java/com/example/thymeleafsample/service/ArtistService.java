@@ -59,6 +59,7 @@ public class ArtistService {
         var filePath = localStorageService.store(cover);
 
         //artist.setArtistArtUrl("images/" + cover.getOriginalFilename());
+
         artist.setArtistArtUrl(filePath);
         artistRepository.save(artist);
     }

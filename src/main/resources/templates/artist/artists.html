@@ -26,6 +26,7 @@
         <th>アーティスト名</th>
         <th>アーティスト名(読み)</th>
         <th>詳細</th>
+        <th>編集</th>
         <th>削除</th>
       </tr>
       <tr th:each="artist: ${artists}">
@@ -35,6 +36,12 @@
           <form method="get" th:method="get" th:action="@{/artists/{id}(id=*{artist.artistId})}">
             <input type="hidden" name="id" th:value="${artist.artistId}" />
             <input type="submit" class="btn btn-secondary" value="詳細">
+          </form>
+        </td>
+        <td style="text-align: center">
+          <form method="get" th:method="get" th:action="@{/artists/edit/{id}(id=*{artist.artistId})}">
+            <input type="hidden" name="id" th:value="${artist.artistId}" />
+            <input type="submit" class="btn btn-secondary" value="編集" />
           </form>
         </td>
         <td style="text-align: center">

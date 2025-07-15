@@ -17,10 +17,14 @@ public class LocalStorageService implements StorageService {
     @Override
     public String store(MultipartFile file) {
         try {
-            Files.write(Paths.get("static/images/" + file.getOriginalFilename()),file.getBytes());
+            if(!file.isEmpty()) {
+                Files.write(Paths.get("static/images/" + file.getOriginalFilename()),file.getBytes());
+                return "images/" + file.getOriginalFilename();
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "images/" + file.getOriginalFilename();
+        return "images/default.png";
     }
 }
